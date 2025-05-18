@@ -32,6 +32,9 @@ export default function Navbar() {
   const handleMenuClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     
+    // Đảm bảo logo luôn hiển thị khi chuyển section
+    setForceShowLogo(true);
+    
     // Xử lý trường hợp click vào Trang chủ
     if (href === "") {
       window.history.pushState({}, '', '/');
@@ -45,11 +48,10 @@ export default function Navbar() {
     }
 
     setHasInteracted(true);
-    setForceShowLogo(true);
     const targetId = href.replace('#', '');
     const element = document.getElementById(targetId);
     if (element) {
-      const navbarHeight = showLogo ? 100 : 60;
+      const navbarHeight = 100; // Luôn sử dụng chiều cao của navbar khi có logo
       const headerHeight = 41;
       const offset = navbarHeight + headerHeight;
       const elementPosition = element.getBoundingClientRect().top;
@@ -59,10 +61,13 @@ export default function Navbar() {
       const newUrl = targetId ? `/${targetId}` : '/';
       window.history.pushState({}, '', newUrl);
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      // Đảm bảo rằng logo đã hiển thị trước khi cuộn
+      setTimeout(() => {
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }, 0);
     }
   };
 
