@@ -105,43 +105,39 @@ export default function Library() {
   }, []);
 
   return (
-    <section className="flex w-full items-center justify-center bg-[#F6FAFD] py-15">
-      <div id="thu-vien-anh" className="container mx-auto px-4 pb-4 pt-10">
-        <div className="flex flex-col justify-center text-center pb-2">
-          <h2 className="text-primary scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl mb-2">
-            THƯ VIỆN ẢNH
-          </h2>
-          <div className="text-primary">————— ♦ —————</div>
-          <p className="text-primary mb-6">Hình ảnh hoạt động của Hội thi Tên lửa nước qua các năm.</p>
+    <section id="thu-vien-anh" className="container mx-auto px-4 py-15 scroll-mt-[180px]">
+      <div className="flex flex-col items-center justify-center text-center">
+        <div className="text-primary scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl">
+          THƯ VIỆN ẢNH
         </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 w-full max-w-6xl mx-auto">
-          {flickrAlbums.map((album) => (
-            <div key={album.id} className="flex flex-col items-center">
-              <div className="relative w-48 h-36 md:w-56 md:h-40 bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow">
-                <a 
-                  data-flickr-embed="true" 
-                  href={album.albumUrl}
-                  title={album.title}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full h-full"
-                >
-                  <Image
-                    src={album.coverImage}
-                    alt={album.title}
-                    fill
-                    sizes="(max-width: 768px) 192px, 224px"
-                    className="object-cover hover:scale-105 transition-transform duration-300"
-                  />
-                </a>
-              </div>
-              <div className="mt-3 font-bold text-primary text-lg text-center">
-                Năm {album.year}
-              </div>
+        <div className="text-primary">————— ♦ —————</div>
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-10 w-full max-w-6xl mx-auto">
+        {flickrAlbums.map((album) => (
+          <div key={album.id} className="flex flex-col items-center">
+            <div className="relative w-48 h-36 md:w-56 md:h-40 bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow">
+              <a 
+                data-flickr-embed="true" 
+                href={album.albumUrl}
+                title={album.title}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full h-full"
+              >
+                <Image
+                  src={album.coverImage}
+                  alt={album.title}
+                  fill
+                  sizes="(max-width: 768px) 192px, 224px"
+                  className="object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </a>
             </div>
-          ))}
-        </div>
+            <div className="mt-3 font-bold text-primary text-lg text-center">
+              Năm {album.year}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 export default function Register() {
   return (
-    <div id="dang-ky" className="flex w-full items-center justify-center bg-[#CDE8F62E] py-15">
+    <div id="dang-ky" className="flex w-full items-center justify-center bg-[#CDE8F62E] py-15 scroll-mt-[180px]">
       <div className="item container mx-auto flex flex-col gap-4 px-4">
         <div className="flex flex-col justify-center text-center">
           <div className="text-primary scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl">

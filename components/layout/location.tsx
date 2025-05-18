@@ -5,7 +5,7 @@ export default function Location() {
   return (
     <div className="container mx-auto px-4">
       <div className="flex flex-col items-center justify-center gap-4 py-15">
-        <div id="ban-to-chuc" className="text-primary scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl">
+        <div id="ban-to-chuc" className="text-primary scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl scroll-mt-[180px]">
           ĐƠN VỊ TỔ CHỨC
         </div>
         <div className="text-primary">————— ♦ —————</div>
@@ -21,7 +21,7 @@ export default function Location() {
             </AspectRatio>
           </div>
         </div>
-        <div id="dia-diem" className="text-primary scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl">
+        <div id="dia-diem" className="text-primary scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl scroll-mt-[180px]">
           ĐỊA ĐIỂM TỔ CHỨC
         </div>
         <div className="text-primary">————— ♦ —————</div>
