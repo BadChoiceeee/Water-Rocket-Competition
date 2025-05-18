@@ -6,7 +6,7 @@ export default function Document() {
   return (
     <div className="flex w-full items-center justify-center bg-[#CDE8F62E] py-15">
       <div className="container mx-auto flex flex-col items-center justify-center gap-4 px-4">
-        <div className="flex flex-col justify-center pb-4 text-center">
+        <div id="van-ban" className="flex flex-col justify-center pb-4 text-center">
           <div className="text-primary scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl">
             VĂN BẢN
           </div>
@@ -17,7 +17,7 @@ export default function Document() {
           <ButtonLink text={"THỂ LỆ"} link="/Thele_Tenluanuoc2025.pdf" />
         </div>
 
-        <div className="flex flex-col justify-center pt-30 text-center">
+        <div id="thu-thach" className="flex flex-col justify-center pt-30 text-center">
           <div className="text-primary scroll-m-20 text-3xl font-extrabold tracking-tight lg:text-4xl">
             THỬ THÁCH QUA CÁC VÒNG THI
           </div>
@@ -54,7 +54,7 @@ export default function Document() {
 function ButtonLink({ text, link }: { text: string; link: string }) {
   return (
     <div className="bg-gradient-to-r from-[#667db6] to-[#0082c8] p-5 md:mx-10 md:p-10">
-      <a href={link} download>
+      <a href={link} target="_blank" rel="noopener noreferrer">
         <button className="group relative inline-flex h-12 cursor-pointer items-center justify-center overflow-hidden rounded-md border border-white bg-transparent px-6 text-xl font-medium text-neutral-200">
           <span>{text}</span>
           <div className="w-0 translate-x-[100%] pl-0 opacity-0 transition-all duration-200 group-hover:w-5 group-hover:translate-x-0 group-hover:pl-1 group-hover:opacity-100">

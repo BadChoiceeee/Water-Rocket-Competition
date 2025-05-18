@@ -1,19 +1,10 @@
 "use client";
 
-import useToggle from "@/hooks/use-state-toggle";
-import { Menu } from "lucide-react";
-import { motion } from "motion/react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import Sidebar from "./sidebar";
 import Image from "next/image";
 
 export default function Navbar() {
-  const sidebar = useToggle();
-  const [hidden, setHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const pathname = usePathname();
   const [showLogo, setShowLogo] = useState(false);
 
   useEffect(() => {
@@ -21,9 +12,9 @@ export default function Navbar() {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY > lastScrollY && currentScrollY > 50) {
-        setHidden(true);
+        // Handle scroll down
       } else {
-        setHidden(false);
+        // Handle scroll up
       }
 
       setLastScrollY(currentScrollY);
@@ -55,15 +46,15 @@ export default function Navbar() {
           </div>
         )}
         <nav className="flex flex-wrap gap-6 text-[20px] font-bold uppercase items-center justify-center w-full pb-2">
-          <a href="#" className="text-white hover:text-yellow-300 transition-colors">Trang chủ</a>
-          <a href="#" className="text-white hover:text-yellow-300 transition-colors">Giới thiệu</a>
-          <a href="#" className="text-white hover:text-yellow-300 transition-colors">Văn bản</a>
-          <a href="#" className="text-yellow-300 hover:text-yellow-400 transition-colors">Phóng sự</a>
-          <a href="#" className="text-white hover:text-yellow-300 transition-colors">Thi trực tuyến</a>
-          <a href="#" className="text-white hover:text-yellow-300 transition-colors">Thư viện ảnh</a>
-          <a href="#" className="text-white hover:text-yellow-300 transition-colors">Ban tổ chức</a>
-          <a href="#" className="text-yellow-300 hover:text-yellow-400 transition-colors">Danh sách đạt giải</a>
-          <a href="#" className="text-white hover:text-yellow-300 transition-colors">Đăng ký dự thi</a>
+          <a href=" " className="text-white hover:text-yellow-300 transition-colors">Trang chủ</a>
+          <a href="#gioi-thieu" className="text-white hover:text-yellow-300 transition-colors">Giới thiệu</a>
+          <a href="#van-ban" className="text-white hover:text-yellow-300 transition-colors">Văn bản</a>
+          <a href="#thu-thach" className="text-white hover:text-yellow-300 transition-colors">Thử thách</a>
+          <a href="#dang-ky" className="text-white hover:text-yellow-300 transition-colors">Đăng kí dự thi</a>
+          <a href="#thu-vien-anh" className="text-white hover:text-yellow-300 transition-colors">Thư viện ảnh</a>
+          <a href="#ban-to-chuc" className="text-white hover:text-yellow-300 transition-colors">Ban tổ chức</a>
+          <a href="#dia-diem" className="text-white hover:text-yellow-300 transition-colors">Địa điểm tổ chức</a>
+
         </nav>
       </div>
     </>
