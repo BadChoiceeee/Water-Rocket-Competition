@@ -112,10 +112,10 @@ export default function Library() {
         </div>
         <div className="text-primary">————— ♦ —————</div>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-10 w-full max-w-6xl mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-10 w-full max-w-6xl mx-auto">
         {flickrAlbums.map((album) => (
           <div key={album.id} className="flex flex-col items-center">
-            <div className="relative w-48 h-36 md:w-56 md:h-40 bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow">
+            <div className="relative w-full aspect-[4/3] md:w-56 md:h-40 bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow">
               <a 
                 data-flickr-embed="true" 
                 href={album.albumUrl}
@@ -128,12 +128,12 @@ export default function Library() {
                   src={album.coverImage}
                   alt={album.title}
                   fill
-                  sizes="(max-width: 768px) 192px, 224px"
+                  sizes="(max-width: 768px) 50vw, 224px"
                   className="object-cover hover:scale-105 transition-transform duration-300"
                 />
               </a>
             </div>
-            <div className="mt-3 font-bold text-primary text-lg text-center">
+            <div className="mt-2 md:mt-3 font-bold text-primary text-base md:text-lg text-center">
               Năm {album.year}
             </div>
           </div>

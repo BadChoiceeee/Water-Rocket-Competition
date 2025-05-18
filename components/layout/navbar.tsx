@@ -7,8 +7,9 @@ import { useEffect, useState } from "react";
 export default function Navbar() {
   const [showLogo, setShowLogo] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const [hasInteracted, setHasInteracted] = useState(false);
   const [forceShowLogo, setForceShowLogo] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -19,9 +20,7 @@ export default function Navbar() {
       } else {
         setShowLogo(true);
       }
-      if (currentScrollY === 0) {
-        setHasInteracted(false);
-      }
+      setShowScrollTop(currentScrollY > 40);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -42,17 +41,16 @@ export default function Navbar() {
         top: 0,
         behavior: 'smooth'
       });
-      setHasInteracted(false);
       setForceShowLogo(false);
       return;
     }
 
-    setHasInteracted(true);
     const targetId = href.replace('#', '');
     const element = document.getElementById(targetId);
     if (element) {
-      const navbarHeight = 100; // Luôn sử dụng chiều cao của navbar khi có logo
-      const headerHeight = 41;
+      const isMobile = window.innerWidth < 768; // Kiểm tra nếu là mobile
+      const navbarHeight = isMobile ? 120 : 100; // Điều chỉnh chiều cao navbar cho mobile
+      const headerHeight = isMobile ? 0 : 41; // Bỏ header height trên mobile
       const offset = navbarHeight + headerHeight;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
@@ -92,44 +90,128 @@ export default function Navbar() {
   return (
     <>
       {/* Header thông tin liên hệ */}
-      <motion.div
-        className="fixed top-0 left-0 w-full bg-white text-[15px] text-red-600 flex justify-between items-center px-12 py-2 border-b border-gray-200 z-30"
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ type: "spring", stiffness: 100, damping: 20 }}
-      >
-        <div className="flex items-center gap-6">
-          <span className="flex items-center gap-2.5 hover:text-red-700 transition-colors cursor-pointer">
+      <div className="bg-white text-[15px] text-red-600 flex flex-col md:flex-row justify-between items-center px-4 md:px-12 py-2 border-b border-gray-200 md:fixed md:top-0 md:left-0 md:w-full md:z-30">
+        <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6 w-full md:w-auto">
+          <span className="flex items-center gap-2.5 hover:text-red-700 transition-colors cursor-pointer text-sm md:text-[15px]">
             <span className="text-[16px]">📞</span>
             <span className="font-medium">(028) 38.230.780 – (028) 38. 233. 363</span>
           </span>
-          <span className="flex items-center gap-2.5 hover:text-red-700 transition-colors cursor-pointer">
+          <span className="flex items-center gap-2.5 hover:text-red-700 transition-colors cursor-pointer text-sm md:text-[15px]">
             <span className="text-[16px]">✉</span>
             <span className="font-medium">khoahoctre@gmail.com</span>
           </span>
         </div>
-        <motion.a
+        {/* Nút trở về KHOA HỌC TRẺ TST chỉ hiện trên PC */}
+        <a
           href="http://khoahoctre.com.vn" 
           target="_blank"
           rel="noopener noreferrer"
-          className="text-red-600 hover:text-red-700 text-right text-[15px] font-semibold px-4 py-1 rounded-md hover:bg-red-50 transition-all duration-300 border border-red-200 hover:border-red-300"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
+          className="hidden md:block text-red-600 hover:text-red-700 text-right text-[15px] font-semibold px-4 py-1 rounded-md hover:bg-red-50 transition-all duration-300 border border-red-200 hover:border-red-300"
         >
           Trở về KHOA HỌC TRẺ TST
-        </motion.a>
-      </motion.div>
+        </a>
+      </div>
 
-      {/* Menu ngang */}
+      {/* Navbar mobile: logo giữa, hamburger menu, dropdown, scroll to top */}
+      <div className="flex flex-col w-full md:hidden">
+        {/* Logo luôn ở giữa trên mobile */}
+        <div className="flex justify-center items-center py-2 bg-[#1653a2]">
+          <Image src="/roket.png" alt="Logo" width={40} height={40} />
+        </div>
+        {/* Menu hamburger và dropdown */}
+        <div className="flex items-center justify-between px-4 py-2 bg-[#1653a2]">
+          <span className="text-white text-base font-semibold">Chọn trang</span>
+          <div className="relative">
+            <button
+              className="text-white p-2"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                {isMobileMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+            {/* Dropdown menu mobile */}
+            <AnimatePresence>
+              {isMobileMenuOpen && (
+                <motion.div
+                  className="absolute top-full right-0 mt-2 w-48 bg-[#1653a2] rounded-lg shadow-lg py-2 px-3 z-50"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="flex flex-col gap-2">
+                    {menuItems.map((item) => (
+                      <motion.a
+                        key={item.href}
+                        href={item.href}
+                        className="text-white hover:text-yellow-300 transition-all duration-300 text-[15px] font-bold uppercase rounded px-2 py-2"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={(e) => {
+                          handleMenuClick(e, item.href);
+                          setIsMobileMenuOpen(false);
+                        }}
+                      >
+                        {item.text}
+                      </motion.a>
+                    ))}
+                    {/* Thêm menu Trở về KHOA HỌC TRẺ TST cho mobile */}
+                    <motion.a
+                      href="http://khoahoctre.com.vn"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white hover:text-yellow-300 transition-all duration-300 text-[15px] font-bold uppercase rounded px-2 py-2"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      Trở về KHOA HỌC TRẺ TST
+                    </motion.a>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
+      </div>
+      {/* Nút quay về đầu trang chỉ hiện trên mobile khi scroll xuống */}
+      <button
+        className={`fixed bottom-6 right-6 z-50 bg-[#1653a2] text-white rounded-full p-4 shadow-lg hover:bg-blue-800 transition-colors md:hidden ${showScrollTop ? '' : 'hidden'}`}
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        aria-label="Quay về đầu trang"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l7.5-7.5 7.5 7.5M12 5.25v13.5" />
+        </svg>
+      </button>
+
+      {/* Navbar PC: giữ nguyên như ban đầu, menu section, hiệu ứng showLogo, v.v. */}
       <motion.div
-        className="fixed top-[41px] left-0 w-full z-20 bg-[#1653a2] flex flex-col items-center justify-center" 
+        className="hidden md:flex fixed top-[41px] left-0 w-full z-20 bg-[#1653a2] flex-col items-center justify-center"
+        style={{ minHeight: showLogo ? '100px' : '60px', transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)' }}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.1 }}
-        style={{
-          minHeight: showLogo ? '100px' : '60px',
-          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-        }}
       >
         <AnimatePresence mode="wait">
           {(showLogo || forceShowLogo) && (
@@ -149,10 +231,9 @@ export default function Navbar() {
             </motion.div>
           )}
         </AnimatePresence>
-
         <nav className="flex items-center justify-center w-full pb-2">
           <div 
-            className={`flex ${showLogo ? 'flex-row' : hasInteracted ? 'flex-row' : 'flex-col'} items-center justify-center gap-8 transition-all duration-300 ease-in-out ${!showLogo ? 'pt-4' : ''}`}
+            className={`flex ${showLogo ? 'flex-row' : forceShowLogo ? 'flex-row' : 'flex-col'} items-center justify-center gap-8 transition-all duration-300 ease-in-out ${!showLogo ? 'pt-4' : ''}`}
           >
             <div className="flex items-center justify-center gap-8">
               {mainMenuItems.map((item, index) => (
@@ -182,7 +263,7 @@ export default function Navbar() {
               href={registerItem.href}
               className={`text-white hover:text-yellow-300 transition-all duration-300 ${
                 showLogo ? 'text-[13px]' : 'text-[16px]'
-              } font-bold uppercase whitespace-nowrap ${showLogo ? 'mt-0' : hasInteracted ? 'mt-0' : 'mt-4'}`}
+              } font-bold uppercase whitespace-nowrap ${showLogo ? 'mt-0' : forceShowLogo ? 'mt-0' : 'mt-4'}`}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, y: 20 }}
