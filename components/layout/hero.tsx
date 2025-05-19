@@ -16,7 +16,7 @@ export default function Hero() {
             <Image src={"/logo.png"} alt="" fill priority />
           </AspectRatio>
         </div>
-        <ul className="text-primary my-6 ml-6 list-disc text-xl [&_span]:font-bold [&>li]:mt-2">
+        <ul className="text-primary my-6 ml-6 list-disc text-xl text-justify [&_span]:font-bold [&>li]:mt-2">
           <li>
             <span>Hội thi Tên lửa nước TP. Hồ Chí Minh</span> là hoạt động
             thường niên do Thành Đoàn TP. Hồ Chí Minh tổ chức, Trung tâm Phát
