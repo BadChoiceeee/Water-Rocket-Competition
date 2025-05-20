@@ -13,6 +13,13 @@ interface FlickrAlbum {
 
 const flickrAlbums: FlickrAlbum[] = [
   {
+    id: "72177720315153631",
+    title: "Hội thi Tên lửa nước năm 2024",
+    year: "2024",
+    coverImage: "https://live.staticflickr.com/65535/54533764225_4dcb2eb61c_w.jpg",
+    albumUrl: "https://www.flickr.com/photos/202889983@N08/albums/72177720326253421/"
+  },
+  {
     id: "72177720315153620",
     title: "Hội thi Tên lửa nước năm 2023",
     year: "2023",
@@ -25,20 +32,6 @@ const flickrAlbums: FlickrAlbum[] = [
     year: "2022",
     coverImage: "https://live.staticflickr.com/65535/53560867299_7fdbae2d9a_k.jpg",
     albumUrl: "https://www.flickr.com/photos/152044255@N07/albums/72177720315153621"
-  },
-  {
-    id: "72177720315153622",
-    title: "Hội thi Tên lửa nước năm 2021",
-    year: "2021",
-    coverImage: "https://live.staticflickr.com/65535/53560867299_7fdbae2d9a_k.jpg",
-    albumUrl: "https://www.flickr.com/photos/152044255@N07/albums/72177720315153622"
-  },
-  {
-    id: "72177720315153623",
-    title: "Hội thi Tên lửa nước năm 2020",
-    year: "2020",
-    coverImage: "https://live.staticflickr.com/65535/53560867299_7fdbae2d9a_k.jpg",
-    albumUrl: "https://www.flickr.com/photos/152044255@N07/albums/72177720315153623"
   },
   {
     id: "72177720315153624",
@@ -54,41 +47,6 @@ const flickrAlbums: FlickrAlbum[] = [
     coverImage: "https://live.staticflickr.com/65535/53560867299_7fdbae2d9a_k.jpg",
     albumUrl: "https://www.flickr.com/photos/152044255@N07/albums/72177720315153625"
   },
-  {
-    id: "72177720315153626",
-    title: "Hội thi Tên lửa nước năm 2017",
-    year: "2017",
-    coverImage: "https://live.staticflickr.com/65535/53560867299_7fdbae2d9a_k.jpg",
-    albumUrl: "https://www.flickr.com/photos/152044255@N07/albums/72177720315153626"
-  },
-  {
-    id: "72177720315153627",
-    title: "Hội thi Tên lửa nước năm 2016",
-    year: "2016",
-    coverImage: "https://live.staticflickr.com/65535/53560867299_7fdbae2d9a_k.jpg",
-    albumUrl: "https://www.flickr.com/photos/152044255@N07/albums/72177720315153627"
-  },
-  {
-    id: "72177720315153628",
-    title: "Hội thi Tên lửa nước năm 2015",
-    year: "2015",
-    coverImage: "https://live.staticflickr.com/65535/53560867299_7fdbae2d9a_k.jpg",
-    albumUrl: "https://www.flickr.com/photos/152044255@N07/albums/72177720315153628"
-  },
-  {
-    id: "72177720315153629",
-    title: "Hội thi Tên lửa nước năm 2014",
-    year: "2014",
-    coverImage: "https://live.staticflickr.com/65535/53560867299_7fdbae2d9a_k.jpg",
-    albumUrl: "https://www.flickr.com/photos/152044255@N07/albums/72177720315153629"
-  },
-  {
-    id: "72177720315153630",
-    title: "Hội thi Tên lửa nước năm 2013",
-    year: "2013",
-    coverImage: "https://live.staticflickr.com/65535/53560867299_7fdbae2d9a_k.jpg",
-    albumUrl: "https://www.flickr.com/photos/152044255@N07/albums/72157681958819005"
-  }
 ];
 
 export default function Library() {
@@ -112,7 +70,7 @@ export default function Library() {
         </div>
         <div className="text-primary">————— ♦ —————</div>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-10 w-full max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-10 w-full max-w-6xl mx-auto">
         {flickrAlbums.map((album) => (
           <div key={album.id} className="flex flex-col items-center">
             <div className="relative w-full aspect-[4/3] md:w-56 md:h-40 bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow">
