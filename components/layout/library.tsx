@@ -23,8 +23,8 @@ const flickrAlbums: FlickrAlbum[] = [
     id: "72177720315153620",
     title: "Hội thi Tên lửa nước năm 2023",
     year: "2023",
-    coverImage: "https://live.staticflickr.com/65535/53560867299_7fdbae2d9a_k.jpg",
-    albumUrl: "https://www.flickr.com/photos/152044255@N07/albums/72177720315153620"
+    coverImage: "https://live.staticflickr.com/65535/54533820680_9802658439_z.jpg",
+    albumUrl: "https://www.flickr.com/photos/202889983@N08/albums/72177720326279014"
   },
   {
     id: "72177720315153621",
