@@ -30,22 +30,22 @@ const flickrAlbums: FlickrAlbum[] = [
     id: "72177720315153621",
     title: "Hội thi Tên lửa nước năm 2022",
     year: "2022",
-    coverImage: "https://live.staticflickr.com/65535/53560867299_7fdbae2d9a_k.jpg",
-    albumUrl: "https://www.flickr.com/photos/152044255@N07/albums/72177720315153621"
+    coverImage: "https://live.staticflickr.com/65535/54534534171_f50ea518ab_w.jpg",
+    albumUrl: "https://www.flickr.com/photos/202830542@N05/albums/72177720326288114/"
   },
   {
     id: "72177720315153624",
     title: "Hội thi Tên lửa nước năm 2019",
     year: "2019",
-    coverImage: "https://live.staticflickr.com/65535/53560867299_7fdbae2d9a_k.jpg",
-    albumUrl: "https://www.flickr.com/photos/152044255@N07/albums/72177720315153624"
+    coverImage: "https://live.staticflickr.com/65535/54534760383_19ecdb609f_z.jpg",
+    albumUrl: "https://www.flickr.com/photos/202830542@N05/albums/72177720326263186/"
   },
   {
     id: "72177720315153625",
     title: "Hội thi Tên lửa nước năm 2018",
     year: "2018",
-    coverImage: "https://live.staticflickr.com/65535/53560867299_7fdbae2d9a_k.jpg",
-    albumUrl: "https://www.flickr.com/photos/152044255@N07/albums/72177720315153625"
+    coverImage: "https://live.staticflickr.com/65535/54533611337_641164049a_w.jpg",
+    albumUrl: "https://www.flickr.com/photos/202850748@N07/albums/72177720326258010/"
   },
 ];
 
