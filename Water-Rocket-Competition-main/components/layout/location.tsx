@@ -100,7 +100,7 @@ export default function Location() {
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 px-2 sm:px-0">
           <div className="w-full h-[250px] sm:h-[300px] md:h-[400px] rounded-lg overflow-hidden shadow-md">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.5439019285222!2d106.77506797420703!3d10.846173857905043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175270c3865c273%3A0x3e361dab0a829fb5!2zVHLGsOG7nW5nIENhbyDEkOG6s25nIEjhuq11IEPhuqduIDI!5e0!3m2!1svi!2s!4v1743788955976!5m2!1svi!2s"
+              src="https://www.google.com/maps?q=01+Phạm+Ngọc+Thạch,+Bến+Nghé,+Quận+1,+Hồ+Chí+Minh,+Việt+Nam&output=embed"
               allowFullScreen
               loading="lazy"
               className="w-full h-full"
@@ -109,7 +109,7 @@ export default function Location() {
           </div>
 
           <div className="flex flex-col space-y-3 sm:space-y-4 text-left px-4 sm:px-0">
-            <div className="text-[#1653a2] font-bold uppercase text-sm sm:text-base md:text-lg leading-tight text-center sm:text-left">
+            <div className="text-[#1653a2] font-bold uppercase text-sm sm:text-base md:text-lg leading-tight text-center sm:w-max sm:mx-0 sm:ml-8">
               TRUNG TÂM PHÁT TRIỂN KHOA HỌC VÀ CÔNG NGHỆ TRẺ<br />
               THÀNH ĐOÀN TP. HCM
             </div>
